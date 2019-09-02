@@ -152,6 +152,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ssr vs csr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/ssr vs csr/">ssr vs csr</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/02/ssr vs csr/" class="archive-article-date">
+  	<time datetime="2019-09-02T04:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1、ssr"><a href="#1、ssr" class="headerlink" title="1、ssr"></a>1、ssr</h5><p>客户端渲染(scr):1.请求一个html    2.服务器端返回一个html      3.浏览器下载html中的js/css内容   4.等待js下载完成并初始化完成   5.js代码运行 并用ajax等向后端请求服务   6.等待后端数据返回   7.客户端从无到完整的 把数据显示在页面</p>
+<hr>
+<h5 id="2、ssr"><a href="#2、ssr" class="headerlink" title="2、ssr"></a>2、ssr</h5><p>服务器端渲染(ssr): 1.请求一个html    2.服务器端返回一个html    2.服务器请求数据   3.服务器初始化渲染   4.服务器端返回已有正确内容页面   5.客户端请求js/css文件   6.等待js现在完成  7.客户端把剩余的一部分dom元素渲染出来。(由于服务器只返回单纯展示的dom、css 其中的js事件没有在客户端进行绑定 ,最终还是需要加载js后，再次的对页面进行一次渲染称为同构,所以ssr就是更快的展示出页面的内容，先让用户能够看得到，为什么ssr对seo友好,因为搜索引擎爬虫在爬取页面信息的时候,会发送http请求来获取网页内容 而我们服务器端渲染首次的数据是后端返回的,返回的时候已经是渲染好的title、内容等信息,便于爬虫抓取内容)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/02/ssr vs csr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-进程常驻" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -886,86 +962,6 @@
 
 
   
-    <article id="post-Linux下更改MySQL的存储目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/06/Linux下更改MySQL的存储目录/">Linux下更改MySQL的存储目录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/06/Linux下更改MySQL的存储目录/" class="archive-article-date">
-  	<time datetime="2018-08-06T09:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="重要步骤：一定要先停止Mysql"><a href="#重要步骤：一定要先停止Mysql" class="headerlink" title="重要步骤：一定要先停止Mysql"></a>重要步骤：一定要先停止Mysql</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> service mysqld stop</span><br></pre></td></tr></table></figure>
-
-<h5 id="1、创建目标文件夹"><a href="#1、创建目标文件夹" class="headerlink" title="1、创建目标文件夹"></a>1、创建目标文件夹</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mkdir -p /data/mysql</span><br><span class="line"><span class="meta">#</span> chown -R mysql.mysql /data/mysql/</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、迁移命令"><a href="#2、迁移命令" class="headerlink" title="2、迁移命令"></a>2、迁移命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mysql_install_db --user=mysql --basedir=/usr --datadir=/data/mysql</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/08/06/Linux下更改MySQL的存储目录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/06/Linux下更改MySQL的存储目录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1080,6 +1076,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
               </li>
             
             <div class="clearfix"></div>

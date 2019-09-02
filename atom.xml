@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-26T08:11:18.978Z</updated>
+  <updated>2019-09-02T04:13:50.083Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ssr vs csr</title>
+    <link href="http://yoursite.com/2019/09/02/ssr%20vs%20csr/"/>
+    <id>http://yoursite.com/2019/09/02/ssr vs csr/</id>
+    <published>2019-09-02T04:11:00.000Z</published>
+    <updated>2019-09-02T04:13:50.083Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="1、ssr"><a href="#1、ssr" class="headerlink" title="1、ssr"></a>1、ssr</h5><p>客户端渲染(scr):1.请求一个html    2.服务器端返回一个html      3.浏览器下载html中的js/css内容   4.等待js下载完成并初始化完成   5.js代码运行 并用ajax等向后端请求服务   6.等待后端数据返回   7.客户端从无到完整的 把数据显示在页面</p><hr><h5 id="2、ssr"><a href="#2、ssr" class="headerlink" title="2、ssr"></a>2、ssr</h5><p>服务器端渲染(ssr): 1.请求一个html    2.服务器端返回一个html    2.服务器请求数据   3.服务器初始化渲染   4.服务器端返回已有正确内容页面   5.客户端请求js/css文件   6.等待js现在完成  7.客户端把剩余的一部分dom元素渲染出来。(由于服务器只返回单纯展示的dom、css 其中的js事件没有在客户端进行绑定 ,最终还是需要加载js后，再次的对页面进行一次渲染称为同构,所以ssr就是更快的展示出页面的内容，先让用户能够看得到，为什么ssr对seo友好,因为搜索引擎爬虫在爬取页面信息的时候,会发送http请求来获取网页内容 而我们服务器端渲染首次的数据是后端返回的,返回的时候已经是渲染好的title、内容等信息,便于爬虫抓取内容)</p>]]></content>
+    
+    <summary type="html">
+    
+      服务器端渲染和客户端渲染
+    
+    </summary>
+    
+    
+      <category term="Web" scheme="http://yoursite.com/tags/Web/"/>
+    
+  </entry>
   
   <entry>
     <title>Java进程常驻</title>
