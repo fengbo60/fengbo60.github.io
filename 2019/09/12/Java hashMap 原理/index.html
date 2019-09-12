@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="My Dream Will Come True">
 <meta property="og:description" content="java hashmap结构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/12//images/clip_image003.jpg">
-<meta property="og:updated_time" content="2019-09-12T06:55:48.692Z">
+<meta property="og:image" content="https://fengbo60.github.io/images/clip_image003.jpg">
+<meta property="og:updated_time" content="2019-09-12T07:02:35.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java hashMap 原理">
 <meta name="twitter:description" content="java hashmap结构">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/12//images/clip_image003.jpg">
+<meta name="twitter:image" content="https://fengbo60.github.io/images/clip_image003.jpg">
   
     <link rel="alternative" href="/atom.xml" title="My Dream Will Come True" type="application/atom+xml">
   
@@ -189,7 +189,7 @@
 <p>​      ·   较低的“负载极限”会提高查询数据的性能，但会增加hash表所占用的内存开销</p>
 <h2 id="2-hash算法与index算法"><a href="#2-hash算法与index算法" class="headerlink" title="2.hash算法与index算法"></a>2.hash算法与index算法</h2><p>Index算法(在数组中存放的位置)：index = hash &amp; (tab.length – 1)</p>
 <p>Hash算法: h=(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);具体算法 如下：</p>
-<p><img src="..//images/clip_image003.jpg" alt="img"></p>
+<p><img src="https://fengbo60.github.io/images/clip_image003.jpg" alt="img"></p>
 <p>​             HashMap的初始大小和扩容都是以2的次方来进行的，换句话说length-1换成二进制永远是全部为1，比如容量为16，则length-1为1111，大家知道位运算的规则是两个1才得1，遇0的0，也就是说length-1中的某一位为1，则对应位置的计算结果才取决于h中的对应位置（h中对应位取0,对应位结果为0，h对应位取1，对应位结果为1。这样就有两个结果），但是如果length-1中某一位为0，则不论h中对应位的数字为几，对应位结果都是0，这样就让两个h取到同一个结果，这就是hash冲突了，恰恰length-1又是全部为1的数，所以结果自然就将hash冲突最小化了(冲突少能够更宽的插入与查询)</p>
 
       
@@ -449,15 +449,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
