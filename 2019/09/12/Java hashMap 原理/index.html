@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/8 | My Dream Will Come True</title>
+  <title>Java hashMap 原理 | My Dream Will Come True</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="My Dream Will Come True">
-<meta property="og:url" content="http://yoursite.com/archives/2019/08/index.html">
+  <meta name="description" content="java hashmap结构">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java hashMap 原理">
+<meta property="og:url" content="http://yoursite.com/2019/09/12/Java hashMap 原理/index.html">
 <meta property="og:site_name" content="My Dream Will Come True">
+<meta property="og:description" content="java hashmap结构">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/09/12//images/clip_image003.jpg">
+<meta property="og:updated_time" content="2019-09-12T06:55:48.692Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Dream Will Come True">
+<meta name="twitter:title" content="Java hashMap 原理">
+<meta name="twitter:description" content="java hashmap结构">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/12//images/clip_image003.jpg">
   
     <link rel="alternative" href="/atom.xml" title="My Dream Will Come True" type="application/atom+xml">
   
@@ -150,36 +157,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java hashMap 原理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/26/进程常驻/" class="archive-article-date">
-  	<time datetime="2019-08-26T08:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/26/进程常驻/">Java进程常驻</a>
+    <h1 class="article-title" itemprop="name">
+      Java hashMap 原理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/12/Java hashMap 原理/" class="archive-article-date">
+  	<time datetime="2019-09-12T06:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-hashMap内部结构"><a href="#1-hashMap内部结构" class="headerlink" title="1 hashMap内部结构"></a>1 hashMap内部结构</h2><p>​          Java中hashMap是K-V结构的数组，数组每个entry都是一个链式列表，hashMap中有一下几个重要属性:</p>
+<p>容量(capacity)：hash表中桶的数量</p>
+<p>初始化容量大小(initial capacity):初始化桶的大小</p>
+<p>尺寸(size):当前hash表记录的数量</p>
+<p>负载因子(load factor):负载因子等于size/capacity。负载因子为0时表示hash表为空，0.5表示半满的散列表,依此类推。轻负载的散列表具有冲突少、适宜插入与查询的特点</p>
+<p>  除此之外，hash表里还有一个“负载极限”，“负载极限”是一个0～1的数值，“负载极限”决定了hash表的最大填满程度。当hash表中的负载因子达到指定的“负载极限”时，hash表会自动成倍地增加容量（桶的数量），并将原有的对象重新分配，放入新的桶内，这称为rehashing。</p>
+<p>HashMap和Hashtable的构造器允许指定一个负载极限，HashMap和Hashtable默认的“负载极限”为0.75，这表明当该hash表的3/4已经被填满时，hash表会发生rehashing。</p>
+<p>“负载极限”的默认值（0.75）是时间和空间成本上的一种折中：</p>
+<p>​     ·   较高的“负载极限”可以降低hash表所占用的内存空间，但会增加查询数据的时间开销，而查询是最频繁的操作（HashMap的get()与put()方法都要用到查询）</p>
+<p>​      ·   较低的“负载极限”会提高查询数据的性能，但会增加hash表所占用的内存开销</p>
+<h2 id="2-hash算法与index算法"><a href="#2-hash算法与index算法" class="headerlink" title="2.hash算法与index算法"></a>2.hash算法与index算法</h2><p>Index算法(在数组中存放的位置)：index = hash &amp; (tab.length – 1)</p>
+<p>Hash算法: h=(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);具体算法 如下：</p>
+<p><img src="..//images/clip_image003.jpg" alt="img"></p>
+<p>​             HashMap的初始大小和扩容都是以2的次方来进行的，换句话说length-1换成二进制永远是全部为1，比如容量为16，则length-1为1111，大家知道位运算的规则是两个1才得1，遇0的0，也就是说length-1中的某一位为1，则对应位置的计算结果才取决于h中的对应位置（h中对应位取0,对应位结果为0，h对应位取1，对应位结果为1。这样就有两个结果），但是如果length-1中某一位为0，则不论h中对应位的数字为几，对应位结果都是0，这样就让两个h取到同一个结果，这就是hash冲突了，恰恰length-1又是全部为1的数，所以结果自然就将hash冲突最小化了(冲突少能够更宽的插入与查询)</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,19 +231,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/12/Java hashMap 原理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/09/02/ssr vs csr/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ssr vs csr</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
+  
+  
+  
+   
+      <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjMwOS8yMjgyMA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
     
+  
+  
+
+  
 
 
           </div>
@@ -226,8 +375,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
