@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/8 | My Dream Will Come True</title>
+  <title>java Reactor详解 | My Dream Will Come True</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="My Dream Will Come True">
-<meta property="og:url" content="http://yoursite.com/archives/2019/08/index.html">
+  <meta name="description" content="NIO与BIOBIO: 同步并阻塞，客户端和服务端每个连接需要建立一个thread进行处理，非常的浪费资源 NIO:同步非阻塞,服务端实现单线程实现所有客户端的连接,客户端的所有连接请求都会注册到多路复用器上，多路复用器(selector))轮询到连接有I/O请求时才启动一个线程进行处理。 单Reactor 多线程模式​        进行读写事件时非常耗时，Reactor执行事件是串行的，导致后">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java Reactor详解">
+<meta property="og:url" content="http://yoursite.com/2019/09/27/Java Reactor/index.html">
 <meta property="og:site_name" content="My Dream Will Come True">
+<meta property="og:description" content="NIO与BIOBIO: 同步并阻塞，客户端和服务端每个连接需要建立一个thread进行处理，非常的浪费资源 NIO:同步非阻塞,服务端实现单线程实现所有客户端的连接,客户端的所有连接请求都会注册到多路复用器上，多路复用器(selector))轮询到连接有I/O请求时才启动一个线程进行处理。 单Reactor 多线程模式​        进行读写事件时非常耗时，Reactor执行事件是串行的，导致后">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://fengbo60.github.io/images/react_dan.png">
+<meta property="og:image" content="https://fengbo60.github.io/images/react_duo.png">
+<meta property="og:updated_time" content="2019-09-27T06:00:52.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Dream Will Come True">
+<meta name="twitter:title" content="java Reactor详解">
+<meta name="twitter:description" content="NIO与BIOBIO: 同步并阻塞，客户端和服务端每个连接需要建立一个thread进行处理，非常的浪费资源 NIO:同步非阻塞,服务端实现单线程实现所有客户端的连接,客户端的所有连接请求都会注册到多路复用器上，多路复用器(selector))轮询到连接有I/O请求时才启动一个线程进行处理。 单Reactor 多线程模式​        进行读写事件时非常耗时，Reactor执行事件是串行的，导致后">
+<meta name="twitter:image" content="https://fengbo60.github.io/images/react_dan.png">
   
     <link rel="alternative" href="/atom.xml" title="My Dream Will Come True" type="application/atom+xml">
   
@@ -150,36 +158,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java Reactor" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/26/进程常驻/" class="archive-article-date">
-  	<time datetime="2019-08-26T08:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/26/进程常驻/">Java进程常驻</a>
+    <h1 class="article-title" itemprop="name">
+      java Reactor详解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/27/Java Reactor/" class="archive-article-date">
+  	<time datetime="2019-09-27T03:43:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="NIO与BIO"><a href="#NIO与BIO" class="headerlink" title="NIO与BIO"></a>NIO与BIO</h2><p>BIO: 同步并阻塞，客户端和服务端每个连接需要建立一个thread进行处理，非常的浪费资源</p>
+<p>NIO:同步非阻塞,服务端实现单线程实现所有客户端的连接,客户端的所有连接请求都会注册到多路复用器上，多路复用器(selector))轮询到连接有I/O请求时才启动一个线程进行处理。</p>
+<h2 id="单Reactor-多线程模式"><a href="#单Reactor-多线程模式" class="headerlink" title="单Reactor 多线程模式"></a>单Reactor 多线程模式</h2><p>​        进行读写事件时非常耗时，Reactor执行事件是串行的，导致后面的读写事件非常耗时，所以引入线程池 流程图如下</p>
+<p><img src="https://fengbo60.github.io/images/react_dan.png" alt="img"></p>
+<h2 id="主从Reactor多线程模式"><a href="#主从Reactor多线程模式" class="headerlink" title="主从Reactor多线程模式"></a>主从Reactor多线程模式</h2><p>​         分为mainReactor和subReactor   mainReactor主要处理连接事件  subReactor 主要处理读写事件，这样能够处理更高的并发请求,防止由于读写事件的延迟导致连接事件的延迟，流程图如下:</p>
+<p><img src="https://fengbo60.github.io/images/react_duo.png" alt="img"></p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>​     server:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectorServer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> PORT = <span class="number">1234</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 先确定端口号</span></span><br><span class="line">        <span class="keyword">int</span> port = PORT;</span><br><span class="line">        <span class="keyword">if</span> (args != <span class="keyword">null</span> &amp;&amp; args.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            port = Integer.parseInt(args[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 打开一个ServerSocketChannel</span></span><br><span class="line">        ServerSocketChannel ssc = ServerSocketChannel.open();</span><br><span class="line">        <span class="comment">// 获取ServerSocketChannel绑定的Socket</span></span><br><span class="line">        ServerSocket ss = ssc.socket();</span><br><span class="line">        <span class="comment">// 设置ServerSocket监听的端口</span></span><br><span class="line">        ss.bind(<span class="keyword">new</span> InetSocketAddress(port));</span><br><span class="line">        <span class="comment">// 设置ServerSocketChannel为非阻塞模式</span></span><br><span class="line">        ssc.configureBlocking(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">// 打开一个选择器</span></span><br><span class="line">        Selector selector = Selector.open();</span><br><span class="line">        <span class="comment">// 将ServerSocketChannel注册到选择器上去并监听accept事件</span></span><br><span class="line">        ssc.register(selector, SelectionKey.OP_ACCEPT);</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">// 这里会发生阻塞，等待就绪的通道</span></span><br><span class="line">            <span class="keyword">int</span> n = selector.select();</span><br><span class="line">            <span class="comment">// 没有就绪的通道则什么也不做</span></span><br><span class="line">            <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 获取SelectionKeys上已经就绪的通道的集合</span></span><br><span class="line">            Iterator&lt;SelectionKey&gt; iterator = selector.selectedKeys().iterator();</span><br><span class="line">            <span class="comment">// 遍历每一个Key</span></span><br><span class="line">            <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">                SelectionKey sk = iterator.next();</span><br><span class="line">                <span class="comment">// 通道上是否有可接受的连接</span></span><br><span class="line">                <span class="keyword">if</span> (sk.isAcceptable()) &#123;</span><br><span class="line">                    ServerSocketChannel ssc1 = (ServerSocketChannel) sk.channel();</span><br><span class="line">                    SocketChannel sc = ssc1.accept();</span><br><span class="line">                    sc.configureBlocking(<span class="keyword">false</span>);</span><br><span class="line">                    sc.register(selector, SelectionKey.OP_READ);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 通道上是否有数据可读</span></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (sk.isReadable()) &#123;</span><br><span class="line">                    readDataFromSocket(sk);</span><br><span class="line">                &#125;</span><br><span class="line">                iterator.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ByteBuffer bb = ByteBuffer.allocate(<span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从通道中读取数据</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readDataFromSocket</span><span class="params">(SelectionKey sk)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SocketChannel sc = (SocketChannel) sk.channel();</span><br><span class="line">        bb.clear();</span><br><span class="line">        Thread.sleep(<span class="number">1000L</span>);</span><br><span class="line">         <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            count = sc.read(bb);</span><br><span class="line">            <span class="keyword">if</span>(count&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                bb.flip();</span><br><span class="line">                <span class="keyword">while</span> (bb.hasRemaining()) &#123;</span><br><span class="line">                    System.out.print((<span class="keyword">char</span>) bb.get());</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println();</span><br><span class="line">                bb.clear();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(count==-<span class="number">1</span>)&#123;  <span class="comment">//当为-1时表示客户端与服务端已关不连接 如果不加上这个句则通道始终有读的事件写入</span></span><br><span class="line">             <span class="comment">//   sc.close();</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// 客户端断开后，需要手动关闭channel</span></span><br><span class="line">            sc.close();</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        while (sc.read(bb) &gt;0) &#123;</span></span><br><span class="line"><span class="comment">//            bb.flip();</span></span><br><span class="line"><span class="comment">//            while (bb.hasRemaining()) &#123;</span></span><br><span class="line"><span class="comment">//                System.out.print((char) bb.get());</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//            System.out.println();</span></span><br><span class="line"><span class="comment">//            bb.clear();</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>client:</p>
+<p>​    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectorClient</span> </span>&#123;</span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR = <span class="string">"Hello World!"</span>;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String REMOTE_IP = <span class="string">"127.0.0.1"</span>;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> THREAD_COUNT = <span class="number">10</span>;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NonBlockingSocketThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span></span><br><span class="line"><span class="class">      </span>&#123;</span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">             </span>&#123;</span><br><span class="line">                     <span class="keyword">try</span></span><br><span class="line">                    &#123;</span><br><span class="line">                           <span class="keyword">int</span> port = <span class="number">1234</span>;</span><br><span class="line">                           SocketChannel sc = SocketChannel.open();</span><br><span class="line">                            sc.configureBlocking(<span class="keyword">false</span>);</span><br><span class="line">                            sc.connect(<span class="keyword">new</span> InetSocketAddress(REMOTE_IP, port));</span><br><span class="line">                           <span class="keyword">while</span> (!sc.finishConnect())</span><br><span class="line">                                &#123;</span><br><span class="line">                                   System.out.println(<span class="string">"同"</span> + REMOTE_IP + <span class="string">"的连接正在建立，请稍等！"</span>);</span><br><span class="line">                                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                                &#125;</span><br><span class="line">                        String writeStr = STR + <span class="keyword">this</span>.getName();</span><br><span class="line">                             System.out.println(<span class="string">"连接已建立，待写入内容至指定ip+端口！时间为"</span> +                                        System.currentTimeMillis()+<span class="string">"___"</span>+writeStr);</span><br><span class="line">                           ByteBuffer bb = ByteBuffer.allocate(writeStr.length());</span><br><span class="line">                           bb.put(writeStr.getBytes());</span><br><span class="line">                           bb.flip(); <span class="comment">// 写缓冲区的数据之前一定要先反转(flip)</span></span><br><span class="line"></span><br><span class="line">                          <span class="comment">//  sc.write(bb);</span></span><br><span class="line"></span><br><span class="line">                             <span class="comment">// sc.read(bb);</span></span><br><span class="line"></span><br><span class="line">                            bb.clear();</span><br><span class="line">                            sc.close();</span><br><span class="line">                       &#125;</span><br><span class="line">                    <span class="keyword">catch</span> (IOException e)</span><br><span class="line">                    &#123;</span><br><span class="line">                           e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                   <span class="keyword">catch</span> (InterruptedException e)</span><br><span class="line">                    &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">     </span>&#123;</span><br><span class="line">           NonBlockingSocketThread[] nbsts = <span class="keyword">new</span> NonBlockingSocketThread[THREAD_COUNT];</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; THREAD_COUNT; i++)</span><br><span class="line">                    nbsts[i] = <span class="keyword">new</span> NonBlockingSocketThread();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; THREAD_COUNT; i++)</span><br><span class="line">                   nbsts[i].start();</span><br><span class="line">            <span class="comment">// 一定要join保证线程代码先于sc.close()运行，否则会有AsynchronousCloseException</span></span><br><span class="line">          <span class="comment">//  for (int i = 0; i &lt; THREAD_COUNT; i++)</span></span><br><span class="line">         <span class="comment">//           nbsts[i].join();</span></span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：</p>
+<p><a href="https://www.cnblogs.com/hama1993/p/10640067.html和https://github.com/exceting/DemoAll/blob/master/jdk/src/main/java/demo/jdk/reactor/mainsub" target="_blank" rel="noopener">https://www.cnblogs.com/hama1993/p/10640067.html和https://github.com/exceting/DemoAll/blob/master/jdk/src/main/java/demo/jdk/reactor/mainsub</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,19 +233,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/27/Java Reactor/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/09/26/Java String/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java String详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
+  
+  
+  
+   
+      <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjMwOS8yMjgyMA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
     
+  
+  
+
+  
 
 
           </div>
@@ -226,8 +377,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/8 | My Dream Will Come True</title>
+  <title>java iterator详解 | My Dream Will Come True</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="My Dream Will Come True">
-<meta property="og:url" content="http://yoursite.com/archives/2019/08/index.html">
+  <meta name="description" content="iterator 作用​        对于容器集合对象，循环需要知道结合对象的内部结构，对于链表结构循环的话获取莫个元素需要从链表头开始通过指针一个一个的向下寻找。迭代器的作用是循环集合对象不需要知道集合对象的具体内部结构，就能遍历。 iterator 源码解析12345678package java.util;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java iterator详解">
+<meta property="og:url" content="http://yoursite.com/2019/09/26/java  iterator/index.html">
 <meta property="og:site_name" content="My Dream Will Come True">
+<meta property="og:description" content="iterator 作用​        对于容器集合对象，循环需要知道结合对象的内部结构，对于链表结构循环的话获取莫个元素需要从链表头开始通过指针一个一个的向下寻找。迭代器的作用是循环集合对象不需要知道集合对象的具体内部结构，就能遍历。 iterator 源码解析12345678package java.util;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-26T03:38:10.208Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Dream Will Come True">
+<meta name="twitter:title" content="java iterator详解">
+<meta name="twitter:description" content="iterator 作用​        对于容器集合对象，循环需要知道结合对象的内部结构，对于链表结构循环的话获取莫个元素需要从链表头开始通过指针一个一个的向下寻找。迭代器的作用是循环集合对象不需要知道集合对象的具体内部结构，就能遍历。 iterator 源码解析12345678package java.util;public interface Iterator&amp;lt;E&amp;gt; &amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="My Dream Will Come True" type="application/atom+xml">
   
@@ -150,36 +155,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java  iterator" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/26/进程常驻/" class="archive-article-date">
-  	<time datetime="2019-08-26T08:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/26/进程常驻/">Java进程常驻</a>
+    <h1 class="article-title" itemprop="name">
+      java iterator详解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/26/java  iterator/" class="archive-article-date">
+  	<time datetime="2019-09-26T03:04:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="iterator-作用"><a href="#iterator-作用" class="headerlink" title="iterator 作用"></a>iterator 作用</h2><p>​        对于容器集合对象，循环需要知道结合对象的内部结构，对于链表结构循环的话获取莫个元素需要从链表头开始通过指针一个一个的向下寻找。迭代器的作用是循环集合对象不需要知道集合对象的具体内部结构，就能遍历。</p>
+<h2 id="iterator-源码解析"><a href="#iterator-源码解析" class="headerlink" title="iterator 源码解析"></a>iterator 源码解析</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;<span class="comment">//判断是否存在下一个对象元素</span></span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;<span class="comment">//获取下一个元素</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>;<span class="comment">//移除元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ArrayList实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> cursor;       <span class="comment">// index of next element to return</span></span><br><span class="line">      <span class="keyword">int</span> lastRet = -<span class="number">1</span>; <span class="comment">// index of last element returned; -1 if no such</span></span><br><span class="line">      <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line"></span><br><span class="line">      Itr() &#123;&#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> cursor != size;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">      <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          checkForComodification();</span><br><span class="line">          <span class="keyword">int</span> i = cursor;</span><br><span class="line">          <span class="keyword">if</span> (i &gt;= size)</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">          Object[] elementData = ArrayList.<span class="keyword">this</span>.elementData;</span><br><span class="line">          <span class="keyword">if</span> (i &gt;= elementData.length)</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">          cursor = i + <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">return</span> (E) elementData[lastRet = i];</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">          checkForComodification();</span><br><span class="line"></span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              ArrayList.<span class="keyword">this</span>.remove(lastRet);</span><br><span class="line">              cursor = lastRet;</span><br><span class="line">              lastRet = -<span class="number">1</span>;</span><br><span class="line">              expectedModCount = modCount;</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException ex) &#123;</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      ......</span><br></pre></td></tr></table></figure>
+
+<p>从源码可以看出:</p>
+<p>在ArrayList中modCount是当前集合的版本号，每次修改(增、删)集合都会加1；expectedModCount是当前迭代器的版本号，在迭代器实例化时初始化为modCount。我们看到在checkForComodification()方法中就是在验证modCount的值和expectedModCount的值是否相等，所以当你在调用了ArrayList.add()或者ArrayList.remove()时，只更新了modCount的状态，而迭代器中的expectedModCount未同步，因此才会导致再次调用Iterator.next()方法时抛出异常。但是为什么使用Iterator.remove()就没有问题呢？通过源码发现，在Iterator的remove()中同步了expectedModCount的值，所以当你下次再调用next()的时候，检查不会抛出异常，当向结合对象中间插入对象是，结构发生改变，需重新生成iterator对象，因此iterator 没有add方法,并且循环的过程中不能像集合对象添加元素。</p>
+<p>Iterator 使用该机制的主要目的是为了实现ArrayList中的快速失败机制（fail-fast），在Java集合中较大一部分集合是存在快速失败机制的。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,19 +224,137 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/26/java  iterator/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/09/26/Java String/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java String详解
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/09/17/html截屏/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">html截图 原理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
+  
+  
+  
+   
+      <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjMwOS8yMjgyMA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
     
+  
+  
+
+  
 
 
           </div>
@@ -226,8 +377,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
