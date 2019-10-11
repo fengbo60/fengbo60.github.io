@@ -152,6 +152,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Oauth2授权服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/Oauth2授权服务器/">Oauth2 授权服务器(单点登录)</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/09/Oauth2授权服务器/" class="archive-article-date">
+  	<time datetime="2019-10-09T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文参考连接为:<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</a> 阮一峰大佬</p>
+<h2 id="Oauth2"><a href="#Oauth2" class="headerlink" title="Oauth2"></a>Oauth2</h2><p>​      客户端必须得到用户的授权（authorization grant），才能获得令牌（access token）。OAuth 2.0定义了四种授权方式。</p>
+<ul>
+<li>授权码模式（authorization code）(正宗方式)(支持refresh token)</li>
+<li>简化模式（implicit）(为web浏览器应用设计)(不支持refresh token)</li>
+<li>密码模式（resource owner password credentials）(为遗留系统设计)(支持refresh token)</li>
+<li>客户端模式（client credentials）(为后台api服务消费者设计)(不支持refresh token)</li>
+</ul>
+<h2 id="WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别"><a href="#WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别" class="headerlink" title="WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别"></a>WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别</h2><p>​        </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/09/Oauth2授权服务器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java Reactor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -291,6 +373,88 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/26/Java String/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java 线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/26/Java 线程/">java iterator详解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/26/Java 线程/" class="archive-article-date">
+  	<time datetime="2019-09-26T03:04:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h2><p>​    创建线程方法:<br>​               1.继承Thread类创建线程类<br>​                2.实现Runnable接口创建线程类<br>​                3.实现Callable和Future创建线程</p>
+<p>​    线程生命周期:</p>
+<p><img src="https://fengbo60.github.io/images/Thread1.png" alt="img"></p>
+<p>​      控制线程:<br>​           join线程:Thread 提供了让一个线程等待另一个线程完成的方法join()，join()方法通常由适用线程的程序调用<br>​           线程sleep:让当前正在执行的线程暂停一段时间,并进入阻塞状态<br>​            线程让步：yield()方法是一个和sleep()方法有点相似的方法，他也是Thread类提供的一个静态方法，他可以让当前正在执行的线程暂停，但他不会阻塞改线程，他只是让改线程转入就绪状态。</p>
+<p>​    线程同步:</p>
+<p>​          线程同步锁有显示锁(ReentrantLock和隐式锁(synchronized)  显示锁需要手动释放锁古交显示锁</p>
+<p>​    线程通信:</p>
+<pre><code>1.传统的线程通信方式 wait()、notify、notifyAll()
+2. 使用Condition控制线程通信
+3. 使用阻塞队列方式</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/26/Java 线程/">展开全文 >></a>
         </p>
       
 
@@ -805,162 +969,6 @@
 
 
   
-    <article id="post-Git彻底删除历史提交记录的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/Git彻底删除历史提交记录的方法/">Git彻底删除历史提交记录的方法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/05/Git彻底删除历史提交记录的方法/" class="archive-article-date">
-  	<time datetime="2019-06-05T02:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="1、查看Git提交记录"><a href="#1、查看Git提交记录" class="headerlink" title="1、查看Git提交记录"></a>1、查看Git提交记录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> git log</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h6 id="2、找到需要回滚到的提交点，复制它的hash值"><a href="#2、找到需要回滚到的提交点，复制它的hash值" class="headerlink" title="2、找到需要回滚到的提交点，复制它的hash值"></a>2、找到需要回滚到的提交点，复制它的hash值</h6><p><img src="/yilia-plus-demo/images/2743275-f79de5b6d7280d81.png" alt></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> git reset --hard 你复制的hash值</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/06/05/Git彻底删除历史提交记录的方法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">日记本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/05/Git彻底删除历史提交记录的方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-玩转MySQL优化命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/玩转MySQL优化命令/">玩转MySQL优化命令</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/06/玩转MySQL优化命令/" class="archive-article-date">
-  	<time datetime="2019-05-06T10:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1、MySQL更改为只能本地登录"><a href="#1、MySQL更改为只能本地登录" class="headerlink" title="1、MySQL更改为只能本地登录"></a>1、MySQL更改为只能本地登录</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> use mysql;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> select user,host,Password from user <span class="built_in">where</span> user=<span class="string">'root'</span>;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> delete from user <span class="built_in">where</span> user=<span class="string">'root'</span> and host=<span class="string">'%'</span>;</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/05/06/玩转MySQL优化命令/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/06/玩转MySQL优化命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1062,15 +1070,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">

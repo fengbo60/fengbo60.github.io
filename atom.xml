@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-27T06:00:52.050Z</updated>
+  <updated>2019-10-10T03:58:46.902Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Oauth2 授权服务器(单点登录)</title>
+    <link href="http://yoursite.com/2019/10/09/Oauth2%E6%8E%88%E6%9D%83%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://yoursite.com/2019/10/09/Oauth2授权服务器/</id>
+    <published>2019-10-09T12:30:00.000Z</published>
+    <updated>2019-10-10T03:58:46.902Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文参考连接为:<a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</a> 阮一峰大佬</p><h2 id="Oauth2"><a href="#Oauth2" class="headerlink" title="Oauth2"></a>Oauth2</h2><p>​      客户端必须得到用户的授权（authorization grant），才能获得令牌（access token）。OAuth 2.0定义了四种授权方式。</p><ul><li>授权码模式（authorization code）(正宗方式)(支持refresh token)</li><li>简化模式（implicit）(为web浏览器应用设计)(不支持refresh token)</li><li>密码模式（resource owner password credentials）(为遗留系统设计)(支持refresh token)</li><li>客户端模式（client credentials）(为后台api服务消费者设计)(不支持refresh token)</li></ul><h2 id="WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别"><a href="#WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别" class="headerlink" title="WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别"></a>WebSecurityConfigurerAdapter与ResourceServerConfigurerAdapter区别</h2><p>​        </p>]]></content>
+    
+    <summary type="html">
+    
+      Oauth2 授权服务器(单点登录)
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>java Reactor详解</title>
@@ -53,6 +73,29 @@
       
       
         &lt;h2 id=&quot;Java-String-源码解析&quot;&gt;&lt;a href=&quot;#Java-String-源码解析&quot; class=&quot;headerlink&quot; title=&quot;Java String 源码解析&quot;&gt;&lt;/a&gt;Java String 源码解析&lt;/h2&gt;&lt;figure class=&quot;hi
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java iterator详解</title>
+    <link href="http://yoursite.com/2019/09/26/Java%20%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://yoursite.com/2019/09/26/Java 线程/</id>
+    <published>2019-09-26T03:04:40.000Z</published>
+    <updated>2019-10-11T11:40:27.751Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h2><p>​    创建线程方法:<br>​               1.继承Thread类创建线程类<br>​                2.实现Runnable接口创建线程类<br>​                3.实现Callable和Future创建线程</p><p>​    线程生命周期:</p><p><img src="https://fengbo60.github.io/images/Thread1.png" alt="img"></p><p>​      控制线程:<br>​           join线程:Thread 提供了让一个线程等待另一个线程完成的方法join()，join()方法通常由适用线程的程序调用<br>​           线程sleep:让当前正在执行的线程暂停一段时间,并进入阻塞状态<br>​            线程让步：yield()方法是一个和sleep()方法有点相似的方法，他也是Thread类提供的一个静态方法，他可以让当前正在执行的线程暂停，但他不会阻塞改线程，他只是让改线程转入就绪状态。</p><p>​    线程同步:</p><p>​          线程同步锁有显示锁(ReentrantLock和隐式锁(synchronized)  显示锁需要手动释放锁古交显示锁</p><p>​    线程通信:</p><pre><code>1.传统的线程通信方式 wait()、notify、notifyAll()2. 使用Condition控制线程通信3. 使用阻塞队列方式</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Java-线程&quot;&gt;&lt;a href=&quot;#Java-线程&quot; class=&quot;headerlink&quot; title=&quot;Java 线程&quot;&gt;&lt;/a&gt;Java 线程&lt;/h2&gt;&lt;p&gt;​    创建线程方法:&lt;br&gt;​               1.继承Thread类创建线程类&lt;b
       
     
     </summary>
@@ -379,48 +422,6 @@
     <summary type="html">
     
       解决MariaDB中文乱码
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux或Win下安装node和npm</title>
-    <link href="http://yoursite.com/2018/04/20/Linux%E6%88%96Win%E4%B8%8B%E5%AE%89%E8%A3%85node%E5%92%8Cnpm/"/>
-    <id>http://yoursite.com/2018/04/20/Linux或Win下安装node和npm/</id>
-    <published>2018-04-20T07:31:00.000Z</published>
-    <updated>2019-09-12T07:08:46.378Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="一、离线安装Node"><a href="#一、离线安装Node" class="headerlink" title="一、离线安装Node"></a>一、离线安装Node</h4><blockquote><p>官网下载链接：<a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/download/</a><br>node和npm对应关系：<a href="https://nodejs.org/zh-cn/download/releases/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/download/releases/</a></p></blockquote><p><img src="/yilia-plus-demo/images/2743275-497a8e6f4e7c11d2.png" alt></p><a id="more"></a><p><strong>解压目录</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cd /usr/local</span><br><span class="line"><span class="meta">#</span> yum install -y xz</span><br><span class="line"><span class="meta">#</span> xz -d node-v8.11.1-linux-x64.tar.xz</span><br><span class="line"><span class="meta">#</span> tar -xf node-v8.11.1-linux-x64.tar</span><br></pre></td></tr></table></figure><p>这里想要全局使用<code>npm</code> 和 <code>node</code>,就需要做相关软链，如下！</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cd /usr/local/bin</span><br><span class="line"><span class="meta">#</span> ln -s /usr/local/src/node-v8.10.0-linux-x64/bin/npm</span><br><span class="line"><span class="meta">#</span> ln -s /usr/local/src/node-v8.10.0-linux-x64/bin/node</span><br></pre></td></tr></table></figure><p>然后即可在任意位置执行 <code>node  -v</code>   <code>npm  -v</code>  查看相应的版本，则安装完成！</p><h4 id="二、yum安装node和npm-Linux快速安装"><a href="#二、yum安装node和npm-Linux快速安装" class="headerlink" title="二、yum安装node和npm(Linux快速安装)"></a>二、yum安装node和npm<code>(Linux快速安装)</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> yum install epel-release -y</span><br><span class="line"><span class="meta">#</span> yum install nodejs -y</span><br></pre></td></tr></table></figure><h4 id="三、使用淘宝镜像站-建议跳过此步骤，不建议使用"><a href="#三、使用淘宝镜像站-建议跳过此步骤，不建议使用" class="headerlink" title="三、使用淘宝镜像站(建议跳过此步骤，不建议使用)"></a>三、使用淘宝镜像站<code>(建议跳过此步骤，不建议使用)</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> npm config get registry // https://registry.npmjs.org/</span><br><span class="line"><span class="meta">#</span> npm config set registry https://registry.npm.taobao.org</span><br><span class="line">---- 验证是否配置成功</span><br><span class="line"><span class="meta">#</span> npm config get registry</span><br></pre></td></tr></table></figure><h4 id="四、指定全局安装路径和缓存路径-看自己选择是否使用"><a href="#四、指定全局安装路径和缓存路径-看自己选择是否使用" class="headerlink" title="四、指定全局安装路径和缓存路径(看自己选择是否使用)"></a>四、指定全局安装路径和缓存路径<code>(看自己选择是否使用)</code></h4><blockquote><p>设置全局模块的安装路径到 <code>node_global</code> 文件夹，<br>设置缓存到 <code>node_cache</code> 文件夹</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> npm config set prefix D:\nodejs\node_global</span><br><span class="line"><span class="meta">#</span> npm config set cache D:\nodejs\node_cache</span><br><span class="line">---- 验证是否配置成功</span><br><span class="line"><span class="meta">#</span> npm config get cache</span><br><span class="line"><span class="meta">#</span> npm ls -g</span><br></pre></td></tr></table></figure><h4 id="五、安装-cnpm-看自己选择是否使用"><a href="#五、安装-cnpm-看自己选择是否使用" class="headerlink" title="五、安装 cnpm(看自己选择是否使用)"></a>五、安装 cnpm<code>(看自己选择是否使用)</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> npm install cnpm -g --registry=https://registry.npm.taobao.org</span><br><span class="line"><span class="meta">#</span> cnpm -v</span><br></pre></td></tr></table></figure><h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h4><ol><li><strong>npm默认的全局目录可执行命令查看</strong><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> npm config ls</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      Linux或Win下安装node和npm
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux配置SSH Key到GitHub</title>
-    <link href="http://yoursite.com/2018/04/17/Linux%E9%85%8D%E7%BD%AESSH-Key%E5%88%B0GitHub/"/>
-    <id>http://yoursite.com/2018/04/17/Linux配置SSH-Key到GitHub/</id>
-    <published>2018-04-17T06:48:40.000Z</published>
-    <updated>2019-08-23T09:11:06.985Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="1、生成SSH-Key"><a href="#1、生成SSH-Key" class="headerlink" title="1、生成SSH Key"></a>1、生成SSH Key</h4><p><strong>首先检查下本机是否已经安装了SSH，在终端输入ssh即可：</strong></p><p><img src="/yilia-plus-demo/images/2743275-d5ee041fc6a3b53e.png" alt></p><p>如果没有安装进行yum安装</p><a id="more"></a><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> yum -y install openssh-clients</span><br></pre></td></tr></table></figure><h6 id="接下来就是生成ssh-key了，输入ssh-keygen-t-rsa，然后连续按回车键三次（注意：千万不要输入密码！）。"><a href="#接下来就是生成ssh-key了，输入ssh-keygen-t-rsa，然后连续按回车键三次（注意：千万不要输入密码！）。" class="headerlink" title="接下来就是生成ssh key了，输入ssh-keygen -t rsa，然后连续按回车键三次（注意：千万不要输入密码！）。"></a>接下来就是生成<code>ssh key</code>了，输入<code>ssh-keygen -t rsa</code>，然后连续按回车键三次（注意：千万不要输入密码！）。</h6><p><img src="/yilia-plus-demo/images/2743275-7398d3f9f1eef72c.png" alt></p><p><code>id_rsa.pub</code>为公钥，<code>id_rsa</code>为私钥，它们都是隐藏文件。<br>那么如何查看它们的内容呢？只需要继续执行以下两条命令即可。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> cd .ssh/</span><br><span class="line"><span class="meta">#</span> cat id_rsa.pub</span><br></pre></td></tr></table></figure><p><img src="/yilia-plus-demo/images/2743275-2c142d50f896e48b.png" alt></p><h4 id="2、添加SSH-Key到GitHub上"><a href="#2、添加SSH-Key到GitHub上" class="headerlink" title="2、添加SSH Key到GitHub上"></a>2、添加SSH Key到GitHub上</h4><p><img src="/yilia-plus-demo/images/2743275-062ea02946eb9af5.png" alt></p><p>接着执行下面操作：</p><p><img src="/yilia-plus-demo/images/2743275-d2a6a8697131e8d7.png" alt></p><p>点击New SSH Key按钮后进行Key的填写操作，完成SSH Key的添加。如下图：<br><img src="/yilia-plus-demo/images/2743275-1a8f4cd790d9d667.png" alt></p><p><img src="/yilia-plus-demo/images/2743275-cdbdf7fd81c8ac11.png" alt><br>添加SSH Key成功之后，继续输入命令进行测试。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ssh -T git@github.com</span><br></pre></td></tr></table></figure><p><img src="/yilia-plus-demo/images/2743275-5310d1ab738cb79a.png" alt></p><p>出现上图结果则说明添加SSH Key成功。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;1、生成SSH-Key&quot;&gt;&lt;a href=&quot;#1、生成SSH-Key&quot; class=&quot;headerlink&quot; title=&quot;1、生成SSH Key&quot;&gt;&lt;/a&gt;1、生成SSH Key&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;首先检查下本机是否已经安装了SSH，在终端输入ssh即可：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/yilia-plus-demo/images/2743275-d5ee041fc6a3b53e.png&quot; alt&gt;&lt;/p&gt;
-&lt;p&gt;如果没有安装进行yum安装&lt;/p&gt;
     
     </summary>
     

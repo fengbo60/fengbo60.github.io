@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java进程常驻 | My Dream Will Come True</title>
+  <title>Archives: 2019/10 | My Dream Will Come True</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java进程互包机制">
-<meta name="keywords" content="Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java进程常驻">
-<meta property="og:url" content="http://yoursite.com/2019/08/26/进程常驻/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="My Dream Will Come True">
+<meta property="og:url" content="http://yoursite.com/archives/2019/10/index.html">
 <meta property="og:site_name" content="My Dream Will Come True">
-<meta property="og:description" content="Java进程互包机制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-26T08:11:18.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java进程常驻">
-<meta name="twitter:description" content="Java进程互包机制">
+<meta name="twitter:title" content="My Dream Will Come True">
   
     <link rel="alternative" href="/atom.xml" title="My Dream Will Come True" type="application/atom+xml">
   
@@ -155,56 +150,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-进程常驻" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java进程常驻
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/10/09/Oauth2授权服务器/" class="archive-article-date">
+  	<time datetime="2019-10-09T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/10/09/Oauth2授权服务器/">Oauth2 授权服务器(单点登录)</a>
     </h1>
   
 
-        
-        <a href="/2019/08/26/进程常驻/" class="archive-article-date">
-  	<time datetime="2019-08-26T08:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h5><h2 id="最近开发一个及时通信的功能-由于没有用到第三方-自己的通信服务器端用的是netty框架-基本上十几个人的聊天应该是没有问题的，几白人没有测过，上述解决的是在线聊天，但是当用户退出程序后，怎样让用户也能像微信一样能够及时的弹出消息（消息推送），网上查找了一些方法，最开始看了android的GCM原理和苹果的ANPS原理，似乎两个原理差不多，系统自带都有一个进程监听消息，但是由于GCM原理的服务器是google的在国外。故上述方法是不可行的。然后百度，发现现在国内android系统上能够接受及时推送的消息的应用程序都是都有各自的后台永驻进程，监听消息，这也是导致android手机非常耗电的原因。居然都是这样，现在要实现离线通信，那就要保证应用程序在后台有一个永驻进程，并且这个进程要与netty服务器保持长连接。那么怎样才能保持app有一个进程永驻-网上有很多方法"><a href="#最近开发一个及时通信的功能-由于没有用到第三方-自己的通信服务器端用的是netty框架-基本上十几个人的聊天应该是没有问题的，几白人没有测过，上述解决的是在线聊天，但是当用户退出程序后，怎样让用户也能像微信一样能够及时的弹出消息（消息推送），网上查找了一些方法，最开始看了android的GCM原理和苹果的ANPS原理，似乎两个原理差不多，系统自带都有一个进程监听消息，但是由于GCM原理的服务器是google的在国外。故上述方法是不可行的。然后百度，发现现在国内android系统上能够接受及时推送的消息的应用程序都是都有各自的后台永驻进程，监听消息，这也是导致android手机非常耗电的原因。居然都是这样，现在要实现离线通信，那就要保证应用程序在后台有一个永驻进程，并且这个进程要与netty服务器保持长连接。那么怎样才能保持app有一个进程永驻-网上有很多方法" class="headerlink" title="最近开发一个及时通信的功能 由于没有用到第三方 自己的通信服务器端用的是netty框架 基本上十几个人的聊天应该是没有问题的，几白人没有测过，上述解决的是在线聊天，但是当用户退出程序后，怎样让用户也能像微信一样能够及时的弹出消息（消息推送），网上查找了一些方法，最开始看了android的GCM原理和苹果的ANPS原理，似乎两个原理差不多，系统自带都有一个进程监听消息，但是由于GCM原理的服务器是google的在国外。故上述方法是不可行的。然后百度，发现现在国内android系统上能够接受及时推送的消息的应用程序都是都有各自的后台永驻进程，监听消息，这也是导致android手机非常耗电的原因。居然都是这样，现在要实现离线通信，那就要保证应用程序在后台有一个永驻进程，并且这个进程要与netty服务器保持长连接。那么怎样才能保持app有一个进程永驻,网上有很多方法 "></a>最近开发一个及时通信的功能 由于没有用到第三方 自己的通信服务器端用的是netty框架 基本上十几个人的聊天应该是没有问题的，几白人没有测过，上述解决的是在线聊天，但是当用户退出程序后，怎样让用户也能像微信一样能够及时的弹出消息（消息推送），网上查找了一些方法，最开始看了android的GCM原理和苹果的ANPS原理，似乎两个原理差不多，系统自带都有一个进程监听消息，但是由于GCM原理的服务器是google的在国外。故上述方法是不可行的。然后百度，发现现在国内android系统上能够接受及时推送的消息的应用程序都是都有各自的后台永驻进程，监听消息，这也是导致android手机非常耗电的原因。居然都是这样，现在要实现离线通信，那就要保证应用程序在后台有一个永驻进程，并且这个进程要与netty服务器保持长连接。那么怎样才能保持app有一个进程永驻,网上有很多方法 </h2><h5 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h5><p>首先尝试了设置闹钟，定时唤醒，以及改变service的优先级似乎Force Close直接能杀掉后台运行的service，更不用360等一些杀毒软件，后来尝试了native保活，原理就是运行app时先开启一个c进程，c进程的功能就是不断轮询后台service是否挂掉，当挂掉时重启service，退出app时要保证后台运行的不被挂掉，首要前提是app退出后进程c没有挂掉，但是好像5.0系统以上在app退出时会连同c进程一期退出，这种方法的缺点一旦c进程挂掉，就不能再起动起来，那么后来就用到了双进程守护，运用fork()函数在c进程中创建一个父子进程，父子进程进行相互监听，不管谁挂了，就立刻起动谁，父子进程怎样进行通信，怎样传递自己的运行状态，进程间的通信无疑就要用到管道了，建立连个管道a，b，只是使用阻塞方法在另一端去读取管道，这样如果对方进程挂掉，管道会被破坏，那么另一端的读取方法就会执行返回。似乎这种方法在一些手机上可行，但是一些手机上当父进程挂掉，子进程似乎什么都不能干好像也像是挂掉一样，似乎父子进程有点，后来创建了两个不相干的进程，fifo管道在linux下可以建立在两个没有关系的进程间的双向管道，fifo是通过一个文件做通信的，对方进程挂掉之后，自己这边既不会报错也不会返回，而是一直阻塞，直到管道里面有数据。那么，当进程死的时候，自己往管道里面写数据，另一边阻塞读到数据不就可以得知这边死掉了吗，然而这要保证自己不死掉的前提下，最后用到可文件锁进行通信，创建两个a,b进程，创建a进程是对a1文件进行加锁，同时创建a2文件 ，创建b进程的时候对b1文件加锁，同时创建b2文件，当a进程发现有b2文件，删除，并读取b1的锁，当b进程发现a2文件，删除，读取a1文件的锁，只要一方读取到对方文件锁释放，就立刻启动对方的服务，双进程守护完成了上述需要的功能（service不挂掉）</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -216,137 +191,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/26/进程常驻/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/09/02/ssr vs csr/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ssr vs csr
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/01/Git分支的创建、删除、切换/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git分支的创建、删除、切换</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-  
-  
-   
-      <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC80NjMwOS8yMjgyMA==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
     
-  
-  
-
-  
 
 
           </div>
@@ -369,8 +226,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
