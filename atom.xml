@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-10T03:58:46.902Z</updated>
+  <updated>2019-10-11T11:44:55.807Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java 线程</title>
+    <link href="http://yoursite.com/2019/10/11/Java%20%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://yoursite.com/2019/10/11/Java 线程/</id>
+    <published>2019-10-11T11:04:40.000Z</published>
+    <updated>2019-10-11T11:44:55.807Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h2><p>​    创建线程方法:<br>​               1.继承Thread类创建线程类<br>​                2.实现Runnable接口创建线程类<br>​                3.实现Callable和Future创建线程</p><p>​    线程生命周期:</p><p><img src="https://fengbo60.github.io/images/Thread1.png" alt="img"></p><p>​      控制线程:<br>​           join线程:Thread 提供了让一个线程等待另一个线程完成的方法join()，join()方法通常由适用线程的程序调用<br>​           线程sleep:让当前正在执行的线程暂停一段时间,并进入阻塞状态<br>​            线程让步：yield()方法是一个和sleep()方法有点相似的方法，他也是Thread类提供的一个静态方法，他可以让当前正在执行的线程暂停，但他不会阻塞改线程，他只是让改线程转入就绪状态。</p><p>​    线程同步:</p><p>​          线程同步锁有显示锁(ReentrantLock和隐式锁(synchronized)  显示锁需要手动释放锁古交显示锁</p><p>​    线程通信:</p><pre><code>1.传统的线程通信方式 wait()、notify、notifyAll()2. 使用Condition控制线程通信3. 使用阻塞队列方式</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Java-线程&quot;&gt;&lt;a href=&quot;#Java-线程&quot; class=&quot;headerlink&quot; title=&quot;Java 线程&quot;&gt;&lt;/a&gt;Java 线程&lt;/h2&gt;&lt;p&gt;​    创建线程方法:&lt;br&gt;​               1.继承Thread类创建线程类&lt;b
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Oauth2 授权服务器(单点登录)</title>
@@ -96,29 +119,6 @@
       
       
         &lt;h2 id=&quot;iterator-作用&quot;&gt;&lt;a href=&quot;#iterator-作用&quot; class=&quot;headerlink&quot; title=&quot;iterator 作用&quot;&gt;&lt;/a&gt;iterator 作用&lt;/h2&gt;&lt;p&gt;​        对于容器集合对象，循环需要知道结合对象的内部结构，
-      
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java 线程</title>
-    <link href="http://yoursite.com/2019/09/26/Java%20%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://yoursite.com/2019/09/26/Java 线程/</id>
-    <published>2019-09-26T03:04:40.000Z</published>
-    <updated>2019-10-11T11:43:28.544Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h2><p>​    创建线程方法:<br>​               1.继承Thread类创建线程类<br>​                2.实现Runnable接口创建线程类<br>​                3.实现Callable和Future创建线程</p><p>​    线程生命周期:</p><p><img src="https://fengbo60.github.io/images/Thread1.png" alt="img"></p><p>​      控制线程:<br>​           join线程:Thread 提供了让一个线程等待另一个线程完成的方法join()，join()方法通常由适用线程的程序调用<br>​           线程sleep:让当前正在执行的线程暂停一段时间,并进入阻塞状态<br>​            线程让步：yield()方法是一个和sleep()方法有点相似的方法，他也是Thread类提供的一个静态方法，他可以让当前正在执行的线程暂停，但他不会阻塞改线程，他只是让改线程转入就绪状态。</p><p>​    线程同步:</p><p>​          线程同步锁有显示锁(ReentrantLock和隐式锁(synchronized)  显示锁需要手动释放锁古交显示锁</p><p>​    线程通信:</p><pre><code>1.传统的线程通信方式 wait()、notify、notifyAll()2. 使用Condition控制线程通信3. 使用阻塞队列方式</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Java-线程&quot;&gt;&lt;a href=&quot;#Java-线程&quot; class=&quot;headerlink&quot; title=&quot;Java 线程&quot;&gt;&lt;/a&gt;Java 线程&lt;/h2&gt;&lt;p&gt;​    创建线程方法:&lt;br&gt;​               1.继承Thread类创建线程类&lt;b
       
     
     </summary>
