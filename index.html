@@ -402,88 +402,6 @@
 
 
   
-    <article id="post-Java 线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/26/Java 线程/">java iterator详解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/26/Java 线程/" class="archive-article-date">
-  	<time datetime="2019-09-26T03:04:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h2><p>​    创建线程方法:<br>​               1.继承Thread类创建线程类<br>​                2.实现Runnable接口创建线程类<br>​                3.实现Callable和Future创建线程</p>
-<p>​    线程生命周期:</p>
-<p><img src="https://fengbo60.github.io/images/Thread1.png" alt="img"></p>
-<p>​      控制线程:<br>​           join线程:Thread 提供了让一个线程等待另一个线程完成的方法join()，join()方法通常由适用线程的程序调用<br>​           线程sleep:让当前正在执行的线程暂停一段时间,并进入阻塞状态<br>​            线程让步：yield()方法是一个和sleep()方法有点相似的方法，他也是Thread类提供的一个静态方法，他可以让当前正在执行的线程暂停，但他不会阻塞改线程，他只是让改线程转入就绪状态。</p>
-<p>​    线程同步:</p>
-<p>​          线程同步锁有显示锁(ReentrantLock和隐式锁(synchronized)  显示锁需要手动释放锁古交显示锁</p>
-<p>​    线程通信:</p>
-<pre><code>1.传统的线程通信方式 wait()、notify、notifyAll()
-2. 使用Condition控制线程通信
-3. 使用阻塞队列方式</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/26/Java 线程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-java  iterator" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -537,6 +455,88 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/26/java  iterator/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java 线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/26/Java 线程/">java 线程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/26/Java 线程/" class="archive-article-date">
+  	<time datetime="2019-09-26T03:04:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h2><p>​    创建线程方法:<br>​               1.继承Thread类创建线程类<br>​                2.实现Runnable接口创建线程类<br>​                3.实现Callable和Future创建线程</p>
+<p>​    线程生命周期:</p>
+<p><img src="https://fengbo60.github.io/images/Thread1.png" alt="img"></p>
+<p>​      控制线程:<br>​           join线程:Thread 提供了让一个线程等待另一个线程完成的方法join()，join()方法通常由适用线程的程序调用<br>​           线程sleep:让当前正在执行的线程暂停一段时间,并进入阻塞状态<br>​            线程让步：yield()方法是一个和sleep()方法有点相似的方法，他也是Thread类提供的一个静态方法，他可以让当前正在执行的线程暂停，但他不会阻塞改线程，他只是让改线程转入就绪状态。</p>
+<p>​    线程同步:</p>
+<p>​          线程同步锁有显示锁(ReentrantLock和隐式锁(synchronized)  显示锁需要手动释放锁古交显示锁</p>
+<p>​    线程通信:</p>
+<pre><code>1.传统的线程通信方式 wait()、notify、notifyAll()
+2. 使用Condition控制线程通信
+3. 使用阻塞队列方式</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/26/Java 线程/">展开全文 >></a>
         </p>
       
 
