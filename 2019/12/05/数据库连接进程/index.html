@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Git彻底删除历史提交记录的方法 | My Dream Will Come True</title>
+  <title>SQL SERVER 连接进程查看 | My Dream Will Come True</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Git彻底删除历史提交记录的方法">
-<meta name="keywords" content="日记本">
+  <meta name="description" content="SQL SERVER 连接进程详细信息查看">
+<meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git彻底删除历史提交记录的方法">
-<meta property="og:url" content="http://yoursite.com/2019/06/05/Git彻底删除历史提交记录的方法/index.html">
+<meta property="og:title" content="SQL SERVER 连接进程查看">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/数据库连接进程/index.html">
 <meta property="og:site_name" content="My Dream Will Come True">
-<meta property="og:description" content="Git彻底删除历史提交记录的方法">
+<meta property="og:description" content="SQL SERVER 连接进程详细信息查看">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/yilia-plus-demo/images/2743275-f79de5b6d7280d81.png">
-<meta property="og:updated_time" content="2019-08-23T09:11:06.983Z">
+<meta property="og:image" content="https://fengbo60.github.io/images/SYSPROCESSES.png">
+<meta property="og:updated_time" content="2019-12-05T05:11:40.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git彻底删除历史提交记录的方法">
-<meta name="twitter:description" content="Git彻底删除历史提交记录的方法">
-<meta name="twitter:image" content="http://yoursite.com/yilia-plus-demo/images/2743275-f79de5b6d7280d81.png">
+<meta name="twitter:title" content="SQL SERVER 连接进程查看">
+<meta name="twitter:description" content="SQL SERVER 连接进程详细信息查看">
+<meta name="twitter:image" content="https://fengbo60.github.io/images/SYSPROCESSES.png">
   
     <link rel="alternative" href="/atom.xml" title="My Dream Will Come True" type="application/atom+xml">
   
@@ -157,36 +157,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Git彻底删除历史提交记录的方法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-数据库连接进程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Git彻底删除历史提交记录的方法
+      SQL SERVER 连接进程查看
     </h1>
   
 
         
-        <a href="/2019/06/05/Git彻底删除历史提交记录的方法/" class="archive-article-date">
-  	<time datetime="2019-06-05T02:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
+        <a href="/2019/12/05/数据库连接进程/" class="archive-article-date">
+  	<time datetime="2019-12-05T05:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="1、查看Git提交记录"><a href="#1、查看Git提交记录" class="headerlink" title="1、查看Git提交记录"></a>1、查看Git提交记录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> git log</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h6 id="2、找到需要回滚到的提交点，复制它的hash值"><a href="#2、找到需要回滚到的提交点，复制它的hash值" class="headerlink" title="2、找到需要回滚到的提交点，复制它的hash值"></a>2、找到需要回滚到的提交点，复制它的hash值</h6><p><img src="/yilia-plus-demo/images/2743275-f79de5b6d7280d81.png" alt></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> git reset --hard 你复制的hash值</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<hr>
-<h6 id="3、将当前指向的head推到git"><a href="#3、将当前指向的head推到git" class="headerlink" title="3、将当前指向的head推到git"></a>3、将当前指向的head推到git</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> git push --force</span><br></pre></td></tr></table></figure>
-
+        <h2 id="SQLServer-中的SYSPROCESSES表"><a href="#SQLServer-中的SYSPROCESSES表" class="headerlink" title="SQLServer 中的SYSPROCESSES表"></a>SQLServer 中的SYSPROCESSES表</h2><p>性能测试的时候对SQLserver DB中的CPU，io，内存进行监控</p>
+<p>可以通过系统进程表查看资源使用情况</p>
+<p>注意要有master权限</p>
+<p>select top 10 * from SYSPROCESSES order by cpu desc<br>select top 10 * from SYSPROCESSES order by physical_io desc<br>select top 10 * from SYSPROCESSES order by memusage desc</p>
+<p>Status：进程ID 状态<br>dormant = 正在重置回话 ;<br>running = 回话正在运行一个或多个批处理 ;<br>background = 回话正在运行一个后台任务 ;<br>rollback = 会话正在处理事务回滚 ;<br>pending = 回话正在等待工作现成变为可用 ;<br>runnable = 会话中的任务在等待获取 Scheduler 来运行的可执行队列中 ;<br>spinloop = 会话中的任务正在等待自旋锁变为可用 ;<br>suspended = 会话正在等待事件完成</p>
+<p>该表用到的具体含义</p>
+<p><img src="https://fengbo60.github.io/images/SYSPROCESSES.png" alt="img"></p>
 
       
 
@@ -221,7 +218,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">日记本</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
@@ -277,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/05/Git彻底删除历史提交记录的方法/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/05/数据库连接进程/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +288,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/01/Git分支的创建、删除、切换/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Git分支的创建、删除、切换
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/06/玩转MySQL优化命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">玩转MySQL优化命令</div>
+    <a href="/2019/11/05/TCP HTTP WEBOCKET/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TCP HTTP SOCKET WEBSOCKE 原理</div>
       <i class="icon-circle-right"></i>
     </a>
   
