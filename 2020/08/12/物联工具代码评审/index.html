@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/8 | My Dream Will Come True</title>
+  <title>My Dream Will Come True</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="title: 物联工具代码评审date: 2020.08.23 09:05tags: 代码规范description: 物联工具代码规范 1.代码命名问题​      类公共属性以大写字母开头 采用驼峰命名 ,私有属性以_加小写字母开头， 采用驼峰命名，命名尽量在十几个字母以内，变量命名要贴近其真实含义，命名可以参考CodeLF网站。   典型错误案例： 12345public bool  IsC">
+<meta property="og:type" content="article">
 <meta property="og:title" content="My Dream Will Come True">
-<meta property="og:url" content="http://yoursite.com/archives/2018/08/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/08/12/物联工具代码评审/index.html">
 <meta property="og:site_name" content="My Dream Will Come True">
+<meta property="og:description" content="title: 物联工具代码评审date: 2020.08.23 09:05tags: 代码规范description: 物联工具代码规范 1.代码命名问题​      类公共属性以大写字母开头 采用驼峰命名 ,私有属性以_加小写字母开头， 采用驼峰命名，命名尽量在十几个字母以内，变量命名要贴近其真实含义，命名可以参考CodeLF网站。   典型错误案例： 12345public bool  IsC">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-08-12T02:18:13.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My Dream Will Come True">
+<meta name="twitter:description" content="title: 物联工具代码评审date: 2020.08.23 09:05tags: 代码规范description: 物联工具代码规范 1.代码命名问题​      类公共属性以大写字母开头 采用驼峰命名 ,私有属性以_加小写字母开头， 采用驼峰命名，命名尽量在十几个字母以内，变量命名要贴近其真实含义，命名可以参考CodeLF网站。   典型错误案例： 12345public bool  IsC">
   
     <link rel="alternative" href="/atom.xml" title="My Dream Will Come True" type="application/atom+xml">
   
@@ -150,98 +154,182 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-物联工具代码评审" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 物联工具代码评审<br>date: 2020.08.23 09:05<br>tags: 代码规范<br>description: 物联工具代码规范</p>
+<h4 id="1-代码命名问题"><a href="#1-代码命名问题" class="headerlink" title="1.代码命名问题"></a>1.代码命名问题</h4><p>​      类公共属性以大写字母开头 采用驼峰命名 ,私有属性以_加小写字母开头， 采用驼峰命名，命名尽量在十几个字母以内，变量命名要贴近其真实含义，命名可以参考CodeLF网站。</p>
+<p>  典型错误案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public bool  IsCompress &#123; get; set; &#125; = false;</span><br><span class="line">public string LowerMachineMax &#123; get; set; &#125; = null; //下位机最大值</span><br><span class="line">public string LowerMachineMin &#123; get; set; &#125; = null; //下位机最小值</span><br><span class="line">public string IoTMax &#123; get; set; &#125; = null; //物联平台最大值</span><br><span class="line">public string IoTMin &#123; get; set; &#125; = null; //物联平台最小值</span><br></pre></td></tr></table></figure>
+
+<p>正确案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public bool ZoomEnable &#123; get; set; &#125; = false; //是否能缩放</span><br><span class="line"> public double RawUpper &#123; get; set; &#125;//原始值的上边界</span><br><span class="line"> public double RawLower &#123; get; set; &#125;//原始值的下边界</span><br><span class="line"> public double ZoomUpper &#123; get; set; &#125;//缩放的上边界</span><br><span class="line"> public double ZoomLower &#123; get; set; &#125;//缩放的下边界</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-代码格式规范"><a href="#2-代码格式规范" class="headerlink" title="2.代码格式规范"></a>2.代码格式规范</h4><p>​        空格问题，操作符左右应都有空格，最好是每次写完代码后将代码剪切粘贴一边回自动补全，对于大范围的if语句，可以采取取反操作</p>
+<p>  典型错误案例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if (!deposit.IsStationGuidDuplicated)</span><br><span class="line"> &#123;</span><br><span class="line">        if (!string.IsNullOrWhiteSpace(deviceInfo.Guid))</span><br><span class="line">        &#123;</span><br><span class="line">            List&lt;string&gt; guids = new List&lt;string&gt;() &#123; deviceInfo.Guid &#125;;</span><br><span class="line">            int repeatDeviceCount = deposit.DbService.IsExistGuidRepeatingDevice(guids);</span><br><span class="line">            if (repeatDeviceCount &gt; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                status.statusCode = &quot;0004&quot;;</span><br><span class="line">                status.errMsg = $&quot;入库失败，采集编码重复！\n该设备录入采集编码重复&quot;;</span><br><span class="line">                return status;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<p>正确示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if(deposit.IsStationGuidDuplicated|| string.IsNullOrWhiteSpace(deviceInfo.Guid))</span><br><span class="line">     return status</span><br><span class="line"> List&lt;string&gt; guids = new List&lt;string&gt;() &#123; deviceInfo.Guid &#125;;</span><br><span class="line"> int repeatDeviceCount = deposit.DbService.IsExistGuidRepeatingDevice(guids);</span><br><span class="line"> if (repeatDeviceCount &gt; 0)</span><br><span class="line"> &#123;</span><br><span class="line">     status.statusCode = &quot;0004&quot;;</span><br><span class="line">     status.errMsg = $&quot;入库失败，采集编码重复！\n该设备录入采集编码重复&quot;;</span><br><span class="line">     return status;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-业务接口与底层接口不要混用，业务接口调用底层通用接口"><a href="#3-业务接口与底层接口不要混用，业务接口调用底层通用接口" class="headerlink" title="3.业务接口与底层接口不要混用，业务接口调用底层通用接口"></a>3.业务接口与底层接口不要混用，业务接口调用底层通用接口</h4><p> 典型错误案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;DbIotStation&gt; QueryStations(int stationId = 0, int typeId = 0, int divisionId = 0, string readMode = null, string Name = null, string code = null, int LedgerID = 0, int AddrSchemeID = 0, int PID = 0, string stationIDs = null, string ledgerTableName = null, string SNCode = null,int StandingBookID = 0,string guids=null)</span><br><span class="line">&#123;</span><br><span class="line">    List&lt;DbIotStation&gt; result = new List&lt;DbIotStation&gt;();</span><br><span class="line">    using (DbConnection connection = CreateConnection())</span><br><span class="line">    using (DbCommand command = connection.CreateCommand())</span><br></pre></td></tr></table></figure>
+
+<p>正确案例:</p>
+<p>   进行函数重载:一个查询底层的方法名,一个查询业务的方法名。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/21/SpringBoot 2.0 更新记录/" class="archive-article-date">
-  	<time datetime="2018-08-21T02:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/21/SpringBoot 2.0 更新记录/">SpringBoot 2.0 更新记录</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/12/物联工具代码评审/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/Linux下更改MySQL的存储目录/" class="archive-article-date">
-  	<time datetime="2018-08-06T09:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/05/数据库连接进程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQL SERVER 连接进程查看</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/Linux下更改MySQL的存储目录/">Linux下更改MySQL的存储目录</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
+   
+      <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NjMwOS8yMjgyMA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
     
+  
+  
+
+  
 
 
           </div>
@@ -264,8 +352,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

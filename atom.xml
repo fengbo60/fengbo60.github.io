@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-05T05:11:40.731Z</updated>
+  <updated>2020-08-12T02:18:13.863Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2020/08/12/%E7%89%A9%E8%81%94%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81%E8%AF%84%E5%AE%A1/"/>
+    <id>http://yoursite.com/2020/08/12/物联工具代码评审/</id>
+    <published>2020-08-12T01:56:01.779Z</published>
+    <updated>2020-08-12T02:18:13.863Z</updated>
+    
+    <content type="html"><![CDATA[<p>title: 物联工具代码评审<br>date: 2020.08.23 09:05<br>tags: 代码规范<br>description: 物联工具代码规范</p><h4 id="1-代码命名问题"><a href="#1-代码命名问题" class="headerlink" title="1.代码命名问题"></a>1.代码命名问题</h4><p>​      类公共属性以大写字母开头 采用驼峰命名 ,私有属性以_加小写字母开头， 采用驼峰命名，命名尽量在十几个字母以内，变量命名要贴近其真实含义，命名可以参考CodeLF网站。</p><p>  典型错误案例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public bool  IsCompress &#123; get; set; &#125; = false;</span><br><span class="line">public string LowerMachineMax &#123; get; set; &#125; = null; //下位机最大值</span><br><span class="line">public string LowerMachineMin &#123; get; set; &#125; = null; //下位机最小值</span><br><span class="line">public string IoTMax &#123; get; set; &#125; = null; //物联平台最大值</span><br><span class="line">public string IoTMin &#123; get; set; &#125; = null; //物联平台最小值</span><br></pre></td></tr></table></figure><p>正确案例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public bool ZoomEnable &#123; get; set; &#125; = false; //是否能缩放</span><br><span class="line"> public double RawUpper &#123; get; set; &#125;//原始值的上边界</span><br><span class="line"> public double RawLower &#123; get; set; &#125;//原始值的下边界</span><br><span class="line"> public double ZoomUpper &#123; get; set; &#125;//缩放的上边界</span><br><span class="line"> public double ZoomLower &#123; get; set; &#125;//缩放的下边界</span><br></pre></td></tr></table></figure><h4 id="2-代码格式规范"><a href="#2-代码格式规范" class="headerlink" title="2.代码格式规范"></a>2.代码格式规范</h4><p>​        空格问题，操作符左右应都有空格，最好是每次写完代码后将代码剪切粘贴一边回自动补全，对于大范围的if语句，可以采取取反操作</p><p>  典型错误案例： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if (!deposit.IsStationGuidDuplicated)</span><br><span class="line"> &#123;</span><br><span class="line">        if (!string.IsNullOrWhiteSpace(deviceInfo.Guid))</span><br><span class="line">        &#123;</span><br><span class="line">            List&lt;string&gt; guids = new List&lt;string&gt;() &#123; deviceInfo.Guid &#125;;</span><br><span class="line">            int repeatDeviceCount = deposit.DbService.IsExistGuidRepeatingDevice(guids);</span><br><span class="line">            if (repeatDeviceCount &gt; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                status.statusCode = &quot;0004&quot;;</span><br><span class="line">                status.errMsg = $&quot;入库失败，采集编码重复！\n该设备录入采集编码重复&quot;;</span><br><span class="line">                return status;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure><p>正确示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if(deposit.IsStationGuidDuplicated|| string.IsNullOrWhiteSpace(deviceInfo.Guid))</span><br><span class="line">     return status</span><br><span class="line"> List&lt;string&gt; guids = new List&lt;string&gt;() &#123; deviceInfo.Guid &#125;;</span><br><span class="line"> int repeatDeviceCount = deposit.DbService.IsExistGuidRepeatingDevice(guids);</span><br><span class="line"> if (repeatDeviceCount &gt; 0)</span><br><span class="line"> &#123;</span><br><span class="line">     status.statusCode = &quot;0004&quot;;</span><br><span class="line">     status.errMsg = $&quot;入库失败，采集编码重复！\n该设备录入采集编码重复&quot;;</span><br><span class="line">     return status;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><h4 id="3-业务接口与底层接口不要混用，业务接口调用底层通用接口"><a href="#3-业务接口与底层接口不要混用，业务接口调用底层通用接口" class="headerlink" title="3.业务接口与底层接口不要混用，业务接口调用底层通用接口"></a>3.业务接口与底层接口不要混用，业务接口调用底层通用接口</h4><p> 典型错误案例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;DbIotStation&gt; QueryStations(int stationId = 0, int typeId = 0, int divisionId = 0, string readMode = null, string Name = null, string code = null, int LedgerID = 0, int AddrSchemeID = 0, int PID = 0, string stationIDs = null, string ledgerTableName = null, string SNCode = null,int StandingBookID = 0,string guids=null)</span><br><span class="line">&#123;</span><br><span class="line">    List&lt;DbIotStation&gt; result = new List&lt;DbIotStation&gt;();</span><br><span class="line">    using (DbConnection connection = CreateConnection())</span><br><span class="line">    using (DbCommand command = connection.CreateCommand())</span><br></pre></td></tr></table></figure><p>正确案例:</p><p>   进行函数重载:一个查询底层的方法名,一个查询业务的方法名。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;title: 物联工具代码评审&lt;br&gt;date: 2020.08.23 09:05&lt;br&gt;tags: 代码规范&lt;br&gt;description: 物联工具代码规范&lt;/p&gt;
+&lt;h4 id=&quot;1-代码命名问题&quot;&gt;&lt;a href=&quot;#1-代码命名问题&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>SQL SERVER 连接进程查看</title>
@@ -407,26 +429,6 @@
     
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下更改MySQL的存储目录</title>
-    <link href="http://yoursite.com/2018/08/06/Linux%E4%B8%8B%E6%9B%B4%E6%94%B9MySQL%E7%9A%84%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/08/06/Linux下更改MySQL的存储目录/</id>
-    <published>2018-08-06T09:06:00.000Z</published>
-    <updated>2019-08-23T09:11:06.985Z</updated>
-    
-    <content type="html"><![CDATA[<h5 id="重要步骤：一定要先停止Mysql"><a href="#重要步骤：一定要先停止Mysql" class="headerlink" title="重要步骤：一定要先停止Mysql"></a>重要步骤：一定要先停止Mysql</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> service mysqld stop</span><br></pre></td></tr></table></figure><h5 id="1、创建目标文件夹"><a href="#1、创建目标文件夹" class="headerlink" title="1、创建目标文件夹"></a>1、创建目标文件夹</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mkdir -p /data/mysql</span><br><span class="line"><span class="meta">#</span> chown -R mysql.mysql /data/mysql/</span><br></pre></td></tr></table></figure><h5 id="2、迁移命令"><a href="#2、迁移命令" class="headerlink" title="2、迁移命令"></a>2、迁移命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mysql_install_db --user=mysql --basedir=/usr --datadir=/data/mysql</span><br></pre></td></tr></table></figure><a id="more"></a><h5 id="3、为避免麻烦，删掉原文件夹-var-lib-mysql"><a href="#3、为避免麻烦，删掉原文件夹-var-lib-mysql" class="headerlink" title="3、为避免麻烦，删掉原文件夹/var/lib/mysql"></a>3、为避免麻烦，删掉原文件夹/var/lib/mysql</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> rm -rf /var/lib/mysql/*</span><br></pre></td></tr></table></figure><h5 id="4、修改-etc-my-cnf配置文件"><a href="#4、修改-etc-my-cnf配置文件" class="headerlink" title="4、修改/etc/my.cnf配置文件"></a>4、修改/etc/my.cnf配置文件</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">datadir=/data/mysql</span><br></pre></td></tr></table></figure><h5 id="5、启动mysql"><a href="#5、启动mysql" class="headerlink" title="5、启动mysql"></a>5、启动mysql</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> chkconfig mysqld on</span><br><span class="line"><span class="meta">#</span> service mysqld restart</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      Linux下更改MySQL的存储目录
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
   </entry>
   

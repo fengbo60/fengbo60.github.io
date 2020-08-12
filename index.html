@@ -152,6 +152,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-物联工具代码评审" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 物联工具代码评审<br>date: 2020.08.23 09:05<br>tags: 代码规范<br>description: 物联工具代码规范</p>
+<h4 id="1-代码命名问题"><a href="#1-代码命名问题" class="headerlink" title="1.代码命名问题"></a>1.代码命名问题</h4><p>​      类公共属性以大写字母开头 采用驼峰命名 ,私有属性以_加小写字母开头， 采用驼峰命名，命名尽量在十几个字母以内，变量命名要贴近其真实含义，命名可以参考CodeLF网站。</p>
+<p>  典型错误案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public bool  IsCompress &#123; get; set; &#125; = false;</span><br><span class="line">public string LowerMachineMax &#123; get; set; &#125; = null; //下位机最大值</span><br><span class="line">public string LowerMachineMin &#123; get; set; &#125; = null; //下位机最小值</span><br><span class="line">public string IoTMax &#123; get; set; &#125; = null; //物联平台最大值</span><br><span class="line">public string IoTMin &#123; get; set; &#125; = null; //物联平台最小值</span><br></pre></td></tr></table></figure>
+
+<p>正确案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public bool ZoomEnable &#123; get; set; &#125; = false; //是否能缩放</span><br><span class="line"> public double RawUpper &#123; get; set; &#125;//原始值的上边界</span><br><span class="line"> public double RawLower &#123; get; set; &#125;//原始值的下边界</span><br><span class="line"> public double ZoomUpper &#123; get; set; &#125;//缩放的上边界</span><br><span class="line"> public double ZoomLower &#123; get; set; &#125;//缩放的下边界</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-代码格式规范"><a href="#2-代码格式规范" class="headerlink" title="2.代码格式规范"></a>2.代码格式规范</h4><p>​        空格问题，操作符左右应都有空格，最好是每次写完代码后将代码剪切粘贴一边回自动补全，对于大范围的if语句，可以采取取反操作</p>
+<p>  典型错误案例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if (!deposit.IsStationGuidDuplicated)</span><br><span class="line"> &#123;</span><br><span class="line">        if (!string.IsNullOrWhiteSpace(deviceInfo.Guid))</span><br><span class="line">        &#123;</span><br><span class="line">            List&lt;string&gt; guids = new List&lt;string&gt;() &#123; deviceInfo.Guid &#125;;</span><br><span class="line">            int repeatDeviceCount = deposit.DbService.IsExistGuidRepeatingDevice(guids);</span><br><span class="line">            if (repeatDeviceCount &gt; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                status.statusCode = &quot;0004&quot;;</span><br><span class="line">                status.errMsg = $&quot;入库失败，采集编码重复！\n该设备录入采集编码重复&quot;;</span><br><span class="line">                return status;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<p>正确示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if(deposit.IsStationGuidDuplicated|| string.IsNullOrWhiteSpace(deviceInfo.Guid))</span><br><span class="line">     return status</span><br><span class="line"> List&lt;string&gt; guids = new List&lt;string&gt;() &#123; deviceInfo.Guid &#125;;</span><br><span class="line"> int repeatDeviceCount = deposit.DbService.IsExistGuidRepeatingDevice(guids);</span><br><span class="line"> if (repeatDeviceCount &gt; 0)</span><br><span class="line"> &#123;</span><br><span class="line">     status.statusCode = &quot;0004&quot;;</span><br><span class="line">     status.errMsg = $&quot;入库失败，采集编码重复！\n该设备录入采集编码重复&quot;;</span><br><span class="line">     return status;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-业务接口与底层接口不要混用，业务接口调用底层通用接口"><a href="#3-业务接口与底层接口不要混用，业务接口调用底层通用接口" class="headerlink" title="3.业务接口与底层接口不要混用，业务接口调用底层通用接口"></a>3.业务接口与底层接口不要混用，业务接口调用底层通用接口</h4><p> 典型错误案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;DbIotStation&gt; QueryStations(int stationId = 0, int typeId = 0, int divisionId = 0, string readMode = null, string Name = null, string code = null, int LedgerID = 0, int AddrSchemeID = 0, int PID = 0, string stationIDs = null, string ledgerTableName = null, string SNCode = null,int StandingBookID = 0,string guids=null)</span><br><span class="line">&#123;</span><br><span class="line">    List&lt;DbIotStation&gt; result = new List&lt;DbIotStation&gt;();</span><br><span class="line">    using (DbConnection connection = CreateConnection())</span><br><span class="line">    using (DbCommand command = connection.CreateCommand())</span><br></pre></td></tr></table></figure>
+
+<p>正确案例:</p>
+<p>   进行函数重载:一个查询底层的方法名,一个查询业务的方法名。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/12/物联工具代码评审/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数据库连接进程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -920,82 +987,6 @@
 
 
   
-    <article id="post-ssr vs csr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/ssr vs csr/">ssr vs csr</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/02/ssr vs csr/" class="archive-article-date">
-  	<time datetime="2019-09-02T04:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1、ssr"><a href="#1、ssr" class="headerlink" title="1、ssr"></a>1、ssr</h5><p>客户端渲染(scr):1.请求一个html    2.服务器端返回一个html      3.浏览器下载html中的js/css内容   4.等待js下载完成并初始化完成   5.js代码运行 并用ajax等向后端请求服务   6.等待后端数据返回   7.客户端从无到完整的 把数据显示在页面</p>
-<hr>
-<h5 id="2、ssr"><a href="#2、ssr" class="headerlink" title="2、ssr"></a>2、ssr</h5><p>服务器端渲染(ssr): 1.请求一个html    2.服务器端返回一个html    2.服务器请求数据   3.服务器初始化渲染   4.服务器端返回已有正确内容页面   5.客户端请求js/css文件   6.等待js现在完成  7.客户端把剩余的一部分dom元素渲染出来。(由于服务器只返回单纯展示的dom、css 其中的js事件没有在客户端进行绑定 ,最终还是需要加载js后，再次的对页面进行一次渲染称为同构,所以ssr就是更快的展示出页面的内容，先让用户能够看得到，为什么ssr对seo友好,因为搜索引擎爬虫在爬取页面信息的时候,会发送http请求来获取网页内容 而我们服务器端渲染首次的数据是后端返回的,返回的时候已经是渲染好的title、内容等信息,便于爬虫抓取内容)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/ssr vs csr/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1010,7 +1001,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 轻就要对味
+    		&copy; 2020 轻就要对味
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1093,15 +1084,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">日记本</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">日记本</a>
               </li>
              
               <li class="article-tag-list-item">
